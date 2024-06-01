@@ -1,3 +1,5 @@
+window.addEventListener("DOMContentLoaded", () => {});
+
 const interviewImages = document.querySelectorAll(
   ".interview__segment__column__img"
 );

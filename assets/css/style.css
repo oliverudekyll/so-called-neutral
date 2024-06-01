@@ -7,10 +7,11 @@
 
   --color--hover: hsl(0, 0%, 100%);
   --color--primary: rgb(26, 26, 26);
+  --color--bg: hsl(0, 0%, 98%);
 }
 
 ::selection {
-  background-color: hsl(0, 0%, 98%);
+  background-color: hsl(0, 0%, 85%);
 }
 
 body {
@@ -246,7 +247,7 @@ main {
   display: flex;
   flex-flow: column nowrap;
 
-  background-color: hsl(0, 0%, 98%);
+  background-color: var(--color--bg);
   backdrop-filter: blur(10px) brightness(0.5) contrast(1000);
 
   z-index: 500;
@@ -291,6 +292,11 @@ main {
   grid-column-start: 1;
 }
 
+.interview__segment__column[data-person="?"] {
+  grid-column-start: 4;
+  padding-right: 1rem;
+}
+
 .interview__segment__column[data-person="je"] {
   grid-column-start: 2;
 }
@@ -303,7 +309,17 @@ main {
   grid-column-start: 2;
 }
 
+.interview__segment__column[data-person="rb"] {
+  grid-column-start: 2;
+}
+
+.interview__segment__column[data-person="qj"] {
+  grid-column-start: 3;
+}
+
 .interview__segment__column__p {
+  /* min-width: 45ch; */
+  max-width: 65ch;
   margin: 0 0 0.9rem 2.5rem;
 
   color: var(--color--primary);
@@ -341,6 +357,11 @@ main {
   content: "JH";
 }
 
+.interview__segment__column[data-person="?"]
+  .interview__segment__column__p:first-child::before {
+  content: "???";
+}
+
 .interview__segment__column[data-person="je"]
   .interview__segment__column__p:first-child::before {
   content: "JE";
@@ -361,9 +382,9 @@ main {
   content: "rb";
 }
 
-.interview__segment__column[data-person="oj"]
+.interview__segment__column[data-person="qj"]
   .interview__segment__column__p:first-child::before {
-  content: "OJ";
+  content: "QJ";
 }
 
 .interview__segment__column__p:last-child {
@@ -395,27 +416,59 @@ main {
   width: 100%;
 }
 
-.interview__footer {
+.footer {
+  position: relative;
+  width: 100%;
+  padding: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 0.75rem;
+  margin-top: 2rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  background-color: var(--color--bg);
+  border: 0.0625rem solid var(--color--primary);
+}
+
+.footer--centered {
   width: 100%;
   padding: 1rem;
   padding-top: 2rem;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.75rem;
 
   display: flex;
-  justify-content: left;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: flex-start;
 }
 
-.interview__footer__small {
-  color: #000;
-  text-align: center;
+.footer__small {
+  color: var(--color--primary);
+  text-align: left;
   font-size: 0.5rem;
   font-style: normal;
   font-weight: 400;
-  line-height: 80%; /* 0.4rem */
-  letter-spacing: 0.05rem;
+  line-height: 150%;
+  letter-spacing: 0.1rem;
   text-transform: uppercase;
   font-variation-settings: "THCK" 0, "grow" 0 !important;
+}
+
+.footer__small a {
+  padding: 1rem 0rem 1rem 0rem;
+
+  text-decoration: underline;
+  text-decoration-thickness: 0.09em;
+  text-underline-offset: 0.25em;
+
+  color: var(--color--primary);
+
+  transition: all var(--transition--hover);
+}
+
+.footer__small a:hover {
+  color: hsl(0, 0%, 70%);
 }
 
 @media screen and (max-width: 850px) {
@@ -451,5 +504,9 @@ main {
 
   .interview__segment__column[data-person="msb"] {
     grid-column-start: 1;
+  }
+
+  .footer {
+    flex-flow: column;
   }
 }
