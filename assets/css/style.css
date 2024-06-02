@@ -480,7 +480,7 @@ main {
   align-items: flex-start;
 
   background-color: var(--color--bg);
-  border: 0.0625rem solid var(--color--primary);
+  border-top: 0.0625rem solid var(--color--primary);
 }
 
 .footer--centered {
