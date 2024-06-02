@@ -291,11 +291,11 @@ main {
   top: 0;
   left: 0;
 
-  /* opacity: 0; */
+  opacity: 0;
   transform: translateY(-100%);
   /* visibility: hidden; */
 
-  display: flex;
+  /* display: none; */
   flex-flow: column nowrap;
 
   background-color: var(--color--bg);
@@ -308,9 +308,14 @@ main {
 }
 
 .interview.visible {
+  /* display: flex; */
   opacity: 1;
   transform: translateY(0);
   visibility: visible;
+}
+
+.interview--wrapper {
+  display: none;
 }
 
 .interview__segment {
@@ -445,7 +450,7 @@ main {
 .p--float-space {
   width: 2rem;
   height: 2rem;
-  shape-outside: circle(75%);
+  shape-outside: circle(50%);
 
   opacity: 0;
   background-color: rgb(255, 255, 255);
