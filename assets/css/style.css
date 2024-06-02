@@ -291,7 +291,7 @@ main {
   top: 0;
   left: 0;
 
-  opacity: 0;
+  /* opacity: 0; */
   transform: translateY(-100%);
   /* visibility: hidden; */
 
@@ -488,6 +488,17 @@ main {
   border-top: 0.0625rem solid var(--color--primary);
 }
 
+#footer--home {
+  position: fixed;
+  bottom: 0;
+
+  transform: translateY(100%);
+  /* opacity: 0; */
+  transition: all var(--transition--fast);
+
+  z-index: 1001;
+}
+
 .footer--centered {
   width: 100%;
   padding: 1rem;
@@ -545,6 +556,13 @@ main {
 
   .interview__segment {
     grid-template-columns: 100%;
+    padding-right: 2rem;
+  }
+
+  .interview__segment__column__p {
+    min-width: initial;
+
+    hyphens: none;
   }
 
   .interview__segment__column[data-person="?"] {

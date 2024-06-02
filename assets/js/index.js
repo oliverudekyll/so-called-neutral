@@ -22,6 +22,26 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }, 2000);
 
+  const footerAppear = () => {
+    const homeFooter = document.getElementById("footer--home");
+    const bodyHeight = document.body.scrollHeight;
+    const windowHeight = window.innerHeight;
+    const scrolledAmount = window.scrollY;
+
+    console.log(scrolledAmount);
+    console.log(bodyHeight);
+
+    if (scrolledAmount + windowHeight >= bodyHeight - windowHeight / 4) {
+      homeFooter.style.transform = `translateY(0)`;
+      /* homeFooter.style.opacity = 1; */
+    } else {
+      homeFooter.style.transform = "translateY(100%)";
+      /* homeFooter.style.opacity = ""; */
+    }
+  };
+
+  window.addEventListener("scroll", footerAppear);
+
   intrvwHdrs.forEach((header) => {
     header.addEventListener("click", (event) => {
       const hdrId = event.target.dataset.interview;
@@ -42,7 +62,9 @@ document.addEventListener("DOMContentLoaded", () => {
           graphOverlay.style.filter = "";
           document.body.style.overflow = "";
           interviewCloseBtn.classList.remove("visible");
-          interviewWrapper.style.display = "";
+          setTimeout(() => {
+            interviewWrapper.style.display = "";
+          }, 500);
         },
         { once: true }
       );
