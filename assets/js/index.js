@@ -1,4 +1,24 @@
-window.addEventListener("DOMContentLoaded", () => {});
+const overlayGraph = document.getElementById("graph-overlay__graph");
+const loadingOverlay = document.getElementById("loading-overlay");
+
+window.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    {
+      loadingOverlay.style.opacity = 0;
+      overlayGraph.classList.remove("graph-overlay__graph--loading");
+      document.body.classList.remove("overflow--none");
+    }
+  }, 1500);
+  setTimeout(() => {
+    {
+      const defs = document.querySelectorAll(".graph-overlay__definition");
+      defs.forEach((def) => {
+        console.log("reach");
+        def.style.opacity = "1";
+      });
+    }
+  }, 2000);
+});
 
 const interviewImages = document.querySelectorAll(
   ".interview__segment__column__img"
@@ -78,7 +98,6 @@ interviewParagraphs.forEach((p) => {
   for (let i = 0; i < e; i++) {
     const p = Math.floor(Math.random() * a.length);
     const f = Math.floor(Math.random() * 2);
-    console.log(f);
     const c = Math.floor(Math.random() * 50);
 
     const s = document.createElement("span");

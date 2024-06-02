@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="assets/css/fonts.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
-  <body>
+  <body class="overflow--none">
     <div id="interview-close-btn">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +40,7 @@
       <small class="graph-overlay__definition definition--right">
         Friction</small
       >
-      <div class="graph-overlay__graph">
+      <div id="graph-overlay__graph" class="graph-overlay__graph--loading">
         <!-- <span id="scroll-circle"></span> -->
         <div class="graph-overlay__graph__arrowhead--container-vertical">
           <svg
@@ -113,6 +113,7 @@
         <div class="graph-overlay__graph__line--horizontal"></div>
       </div>
     </div>
+    <div id="loading-overlay"></div>
     <main>
       <section class="title">
         <hgroup class="title__hgroup">
@@ -1247,7 +1248,7 @@
               I had a question about your very experimental display fonts, for
               example the Diorama fonts. How do you feel about experimenting
               with body text or running text? Does it always have to be legible
-              and readable, and how do you look at treating that? (Hana)
+              and readable, and how do you look at treating that? <i>(Hana)</i>
             </p>
           </div>
         </div>
