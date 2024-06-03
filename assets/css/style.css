@@ -496,7 +496,7 @@ main {
   /* opacity: 0; */
   transition: all var(--transition--fast);
 
-  z-index: 500;
+  z-index: 499;
 }
 
 .footer--centered {
@@ -595,5 +595,7 @@ main {
 
   .footer {
     flex-flow: column;
+    /*     display: grid;
+    grid-template-columns: repeat(2, 1fr); */
   }
 }
