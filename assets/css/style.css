@@ -86,7 +86,7 @@ i {
   mix-blend-mode: difference;
   pointer-events: none;
   z-index: 1001;
-  transition: filter var(--transition--long);
+  transition: filter var(--transition--long), height var(--transition--fast);
 }
 
 #graph-overlay__graph {
@@ -150,13 +150,13 @@ i {
 .definition--left {
   left: 0;
   top: 50%;
-  transform: rotate(-90deg) translateY(-50%);
+  transform: rotate(-90deg) translate(8%, -50%);
 }
 
 .definition--right {
   right: 0;
   top: 50%;
-  transform: rotate(90deg) translateY(-50%);
+  transform: rotate(90deg) translate(-5%, -50%);
 }
 
 #scroll-circle {
@@ -496,7 +496,7 @@ main {
   /* opacity: 0; */
   transition: all var(--transition--fast);
 
-  z-index: 1001;
+  z-index: 500;
 }
 
 .footer--centered {

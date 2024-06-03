@@ -27,20 +27,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const bodyHeight = document.body.scrollHeight;
     const windowHeight = window.innerHeight;
     const scrolledAmount = window.scrollY;
+    const graphOverlay = document.getElementById("graph-overlay");
+    const footerHeight = homeFooter.clientHeight;
+    console.log(footerHeight);
 
-    console.log(scrolledAmount);
-    console.log(bodyHeight);
-
-    if (scrolledAmount + windowHeight >= bodyHeight - windowHeight / 4) {
+    if (scrolledAmount + windowHeight >= bodyHeight - windowHeight / 8) {
+      graphOverlay.style.height = `calc(100vh - ${footerHeight}px)`;
       homeFooter.style.transform = `translateY(0)`;
-      /* homeFooter.style.opacity = 1; */
     } else {
       homeFooter.style.transform = "translateY(100%)";
+      graphOverlay.style.height = "";
       /* homeFooter.style.opacity = ""; */
     }
   };
 
   window.addEventListener("scroll", footerAppear);
+  window.addEventListener("resize", footerAppear);
 
   intrvwHdrs.forEach((header) => {
     header.addEventListener("click", (event) => {
@@ -105,6 +107,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const grow = (mouseY / innerHeight) * 1000;
     document.body.style.fontVariationSettings = `"THCK" ${thck}, "grow" ${grow}`;
   };
-
   window.addEventListener("mousemove", mouseMove);
+  window.addEventListener("DOMContentLoaded", mouseMove);
 });
