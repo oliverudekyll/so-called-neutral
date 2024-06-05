@@ -4,6 +4,7 @@
   --transition--long: 0.75s ease-out;
   --transition--fast: 0.5s cubic-bezier(0.86, 0, 0.07, 1);
   --quarter-p1: calc((100vw / 4) - 1rem);
+  --third-p1: calc((100vw / 3) - 1rem);
 
   --color--hover: hsl(0, 0%, 100%);
   --color--primary: rgb(26, 26, 26);
@@ -323,7 +324,7 @@ main {
   width: 100%;
   display: grid;
   padding: 1rem;
-  grid-template-columns: repeat(4, var(--quarter-p1));
+  grid-template-columns: repeat(4, var(--third-p1));
   gap: 1rem;
 }
 
@@ -350,7 +351,7 @@ main {
 
 .interview__segment__column[data-person="?"] {
   grid-column-start: 3;
-  /* padding-right: 1rem; */
+  padding-right: 1rem;
 }
 
 .interview__segment__column[data-person="je"] {
@@ -359,6 +360,7 @@ main {
 
 .interview__segment__column[data-person="er"] {
   grid-column-start: 3;
+  padding-right: 1rem;
 }
 
 .interview__segment__column[data-person="msb"] {
@@ -371,10 +373,11 @@ main {
 
 .interview__segment__column[data-person="qj"] {
   grid-column-start: 3;
+  padding-right: 1rem;
 }
 
 .interview__segment__column__p {
-  min-width: 45ch;
+  /* min-width: 45ch; */
   max-width: 60ch;
   margin: 0 0 0.9rem 2.5rem;
 
