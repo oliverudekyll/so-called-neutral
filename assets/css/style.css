@@ -383,7 +383,7 @@ main {
   font-style: normal;
   line-height: 120%; /* 0.9rem */
   letter-spacing: 0.0225rem;
-  hyphens: auto;
+  /* hyphens: auto; */
   hyphenate-limit-chars: 7 3 3;
 }
 
@@ -459,17 +459,23 @@ main {
 }
 
 .interview__segment__column__img {
-  width: 33.3%;
-  shape-outside: circle(100%);
-  /* margin: 1rem; */
-  margin-left: 0;
+  display: none;
+  width: 100%;
+  shape-outside: circle(50%);
+  float: inline-start !important;
 
-  transition: var(--transition--long);
+  margin: 1.35rem;
+  margin: 2rem;
+  filter: contrast(1) grayscale(1);
+
+  transition: all var(--transition--fast);
+  cursor: pointer;
 }
 
 .interview__segment__column__img:hover {
-  /* transform: scale(1.5); */
-  width: 100%;
+  transform: rotate(0) /* scale(2) */ !important;
+  margin-left: 0;
+  width: 200%;
 }
 
 .footer {

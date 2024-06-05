@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  interviewParagraphs.forEach((p) => {
+  /*   interviewParagraphs.forEach((p) => {
     const text = p.innerText;
     const words = text.split(" ");
     const insertCount = Math.floor((Math.random() * words.length) / 5);
@@ -88,6 +88,53 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     p.innerHTML = words.join(" ");
+  }); */
+
+  const images = document.querySelectorAll(".interview__segment__column__img");
+
+  images.forEach((image) => {
+    const rotateValue = Math.random() * 10 - 5;
+    console.log(rotateValue);
+    image.style.transform = `rotate(${rotateValue}deg)`;
+    image.style.float = Math.random() < 0.5 ? "left" : "right";
+  });
+
+  /*   interviewParagraphs.forEach((p) => {
+    const text = p.innerHTML;
+    const words = text.split(/(\s+)/); // Split by spaces but keep the spaces
+
+    const insertCount = Math.floor((Math.random() * words.length) / 5);
+
+    for (let i = 0; i < insertCount; i++) {
+      const pos = Math.floor(Math.random() * words.length);
+      const floatDir = Math.random() < 0.5 ? "inline-start" : "inline-end";
+      const span = document.createElement("span");
+      span.className = "p--float-space";
+      span.style.float = floatDir;
+      words.splice(pos, 0, span.outerHTML);
+    }
+
+    p.innerHTML = words.join("");
+  }); */
+
+  interviewParagraphs.forEach((p) => {
+    // Only process paragraphs that contain text (ignoring inline elements)
+    if (p.children.length === 0) {
+      const text = p.innerHTML;
+      const words = text.split(/(\s+)/); // Split by spaces but keep the spaces
+
+      const insertCount = Math.floor((Math.random() * words.length) / 5);
+
+      for (let i = 0; i < insertCount; i++) {
+        const pos = Math.floor(Math.random() * words.length);
+        const span = document.createElement("span");
+        span.className = "p--float-space";
+        span.style.float = Math.random() < 0.5 ? "left" : "right";
+        words.splice(pos, 0, span.outerHTML);
+      }
+
+      p.innerHTML = words.join("");
+    }
   });
 
   const mouseMove = (event) => {
