@@ -91,12 +91,42 @@ document.addEventListener("DOMContentLoaded", () => {
   }); */
 
   const images = document.querySelectorAll(".interview__segment__column__img");
+  const imgContainers = document.querySelectorAll(
+    ".interview__segment__column__img--container"
+  );
 
   images.forEach((image) => {
     const rotateValue = Math.random() * 10 - 5;
     console.log(rotateValue);
     image.style.transform = `rotate(${rotateValue}deg)`;
     image.style.float = Math.random() < 0.5 ? "left" : "right";
+  });
+
+  imgContainers.forEach((container) => {
+    const dotCount = 250;
+    for (let i = 0; i < dotCount; i++) {
+      const sizeMultiplier = Math.max(0.35, Math.random());
+      const dot = document.createElement("span");
+      dot.className = "column__img__dot";
+      dot.setAttribute("multiplier", sizeMultiplier);
+      const x = Math.random() * 120 - 10;
+      const y = Math.random() * 120 - 10;
+      /*       const x = Math.random() * 150 - 25;
+      const y = Math.random() * 150 - 25; */
+      if (
+        (x > 90 && y > 90) ||
+        (x < 10 && y < 10) ||
+        (x > 90 && y < 10) ||
+        (x < 10 && y > 90)
+      ) {
+        dot.style.left = `50%`;
+        dot.style.top = `50%`;
+      } else {
+        dot.style.left = `${x}%`;
+        dot.style.top = `${y}%`;
+      }
+      container.appendChild(dot);
+    }
   });
 
   /*   interviewParagraphs.forEach((p) => {
@@ -116,6 +146,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     p.innerHTML = words.join("");
   }); */
+  let transformValue = 1;
+
+  /*   window.addEventListener("mousemove", (event) => {
+    transformValue = Math.max(0.5, event.clientY / window.innerHeight) * 2; */
 
   interviewParagraphs.forEach((p) => {
     // Only process paragraphs that contain text (ignoring inline elements)
@@ -142,6 +176,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const mouseY = event.clientY;
     const innerWidth = window.innerWidth;
     const innerHeight = window.innerHeight;
+
+    const dots = document.querySelectorAll(".column__img__dot");
+    dots.forEach((dot) => {
+      const dotWidth = (mouseX / innerWidth) * 14;
+      const multiplier = dot.getAttribute("multiplier");
+      dot.style.width = `${dotWidth * multiplier}px`;
+      dot.style.height = `${dotWidth * multiplier}px`;
+    });
 
     const floatSpc = document.querySelectorAll(".p--float-space");
     const dia = (mouseY / innerHeight) * 1.8;

@@ -390,6 +390,15 @@ main {
   hyphenate-limit-chars: 7 3 3;
 }
 
+.column__p__link {
+  color: hsl(0, 0%, 60%);
+  text-decoration: underline;
+  transition: all var(--transition--hover);
+}
+
+.column__p__link:hover {
+  color: hsl(0, 0%, 90%);
+}
 .interview__segment__column__p:first-child::before {
   position: absolute;
   content: "ER";
@@ -461,24 +470,64 @@ main {
   /* transition: all var(--transition--long); */
 }
 
-.interview__segment__column__img {
-  display: none;
-  width: 100%;
-  shape-outside: circle(50%);
-  float: inline-start !important;
+.interview__segment__column__img--container {
+  position: relative;
+  max-width: 50%;
+  max-height: 20vh;
+  margin: 1.8rem;
 
-  margin: 1.35rem;
-  margin: 2rem;
-  filter: contrast(1) grayscale(1);
+  shape-outside: circle(50%);
+  float: inline-end;
+  /* transform: translateX(50%); */
 
   transition: all var(--transition--fast);
-  cursor: pointer;
+  z-index: 500;
 }
 
-.interview__segment__column__img:hover {
-  transform: rotate(0) /* scale(2) */ !important;
-  margin-left: 0;
-  width: 200%;
+.interview__segment__column__img--container[data-float="left"] {
+  float: inline-start !important;
+  margin-right: 2.7rem;
+  margin-left: 0rem;
+  transform-origin: right top;
+}
+
+.interview__segment__column__img--container[data-float="right"] {
+  float: inline-end !important;
+  margin-left: 2.7rem;
+  margin-right: 0rem;
+  transform-origin: left top;
+}
+
+.interview__segment__column__img {
+  position: relative;
+  width: 100%;
+  max-height: 20vh;
+  object-fit: contain;
+
+  filter: invert(1);
+  transform: none !important;
+
+  transition: all var(--transition--fast);
+  image-rendering: pixelated;
+  /* cursor: pointer; */
+}
+
+.interview__segment__column__img--container:hover {
+  transform: rotate(0) scale(3) !important;
+  /* margin-left: 0; */
+  z-index: 501;
+}
+
+.column__img__dot {
+  position: absolute;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: var(--color--primary);
+  background-color: black;
+  border-radius: 100%;
+
+  z-index: 998;
+  pointer-events: none;
 }
 
 .footer {
@@ -600,6 +649,24 @@ main {
 
   .interview__segment__column[data-person="qj"] {
     grid-column-start: 1;
+  }
+
+  .interview__segment__column__img--container:hover {
+    transform: rotate(0) scale(1) !important;
+    z-index: 501;
+  }
+  .interview__segment__column__img--container[data-float="left"] {
+    float: inline-start !important;
+    margin-right: 2.7rem;
+    margin-left: 0rem;
+    transform-origin: right top;
+  }
+
+  .interview__segment__column__img--container[data-float="right"] {
+    float: inline-end !important;
+    margin-left: 2.7rem;
+    margin-right: 0rem;
+    transform-origin: left top;
   }
 
   .footer {
