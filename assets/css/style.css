@@ -241,20 +241,23 @@ main {
 .title__hgroup__header {
   color: var(--color--primary);
   text-align: center;
-  font-size: clamp(1rem, 21vw, 18.75rem);
   font-size: clamp(1rem, 21vw, 20rem);
+  font-size: 20rem;
   font-style: normal;
   font-weight: 400;
   line-height: 75%;
   /* letter-spacing: -1.3125rem; */
   letter-spacing: -0.07em;
   text-transform: uppercase;
+
+  transition: font-size var(--transition--fast);
 }
 
 .title__hgroup__header--interview {
   color: var(--color--primary);
   text-align: center;
   font-size: clamp(1rem, 10.5vw, 10rem);
+  font-size: 10rem;
   font-style: normal;
   font-weight: 400;
   line-height: 75%;
@@ -263,7 +266,8 @@ main {
   text-transform: uppercase;
 
   cursor: pointer;
-  transition: color var(--transition--hover), transform var(--transition--hover);
+  transition: color var(--transition--hover), transform var(--transition--hover),
+    font-size var(--transition--fast);
 }
 
 .title__hgroup__header--interview:hover {
@@ -470,64 +474,88 @@ main {
   /* transition: all var(--transition--long); */
 }
 
-.interview__segment__column__img--container {
-  position: relative;
-  max-width: 50%;
-  max-height: 20vh;
-  margin: 1.8rem;
+.interview__segment__column__img-icon {
+  display: inline-block;
+  /*   width: 0.75rem;
+  height: 0.75rem; */
+  /* letter-spacing: -0.2rem; */
+  /* font-family: Georgia, 'Times New Roman', Times, serif; */
+  /* padding: .15rem; */
+  font-family: var(--fungal);
+  font-size: 1.5rem;
+  line-height: 0.9rem;
+  font-variation-settings: "THCK" 1000, "grow" 250 !important;
 
-  shape-outside: circle(50%);
-  float: inline-end;
-  /* transform: translateX(50%); */
+  /* transform: translateY(0.225rem); */
 
-  transition: all var(--transition--fast);
+  color: var(--color--primary);
+  border-radius: 100%;
+  transition: transform var(--transition--hover),
+    font-variation-settings var(--transition--long);
   z-index: 500;
+  cursor: zoom-in;
 }
 
-.interview__segment__column__img--container[data-float="left"] {
-  float: inline-start !important;
-  margin-right: 2.7rem;
-  margin-left: 0rem;
-  transform-origin: right top;
-}
-
-.interview__segment__column__img--container[data-float="right"] {
-  float: inline-end !important;
-  margin-left: 2.7rem;
-  margin-right: 0rem;
-  transform-origin: left top;
-}
-
-.interview__segment__column__img {
-  position: relative;
-  width: 100%;
-  max-height: 20vh;
-  object-fit: contain;
-
-  filter: invert(1);
-  transform: none !important;
-
-  transition: all var(--transition--fast);
-  image-rendering: pixelated;
-  /* cursor: pointer; */
-}
-
-.interview__segment__column__img--container:hover {
-  transform: rotate(0) scale(3) !important;
-  /* margin-left: 0; */
+.interview__segment__column__img-icon:hover {
+  transform: scale(2);
+  font-variation-settings: "THCK" 1000, "grow" 1000 !important;
   z-index: 501;
 }
 
-.column__img__dot {
+#img-preview {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  padding: 1rem;
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(255, 255, 255, 0.5);
+
+  cursor: zoom-out;
+  z-index: 1002;
+  pointer-events: none;
+}
+
+.img-preview--active {
+  display: flex !important;
+  pointer-events: initial !important;
+}
+
+#img-preview__img--container {
+  height: 90%;
+  max-width: 90%;
+
+  image-rendering: pixelated;
+}
+
+#img-preview__img {
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+
+  image-rendering: pixelated;
+}
+
+.img-preview__dot {
   position: absolute;
   width: 0.5rem;
   height: 0.5rem;
+
+  display: none;
+
   background-color: var(--color--primary);
   background-color: black;
   border-radius: 100%;
 
   z-index: 998;
   pointer-events: none;
+}
+
+.img-preview__dot--active {
+  display: block;
 }
 
 .footer {
@@ -597,7 +625,45 @@ main {
   color: hsl(0, 0%, 70%);
 }
 
+@media screen and (max-width: 1500px) {
+  .title__hgroup__header {
+    font-size: 15rem;
+  }
+
+  .title__hgroup__header--interview {
+    font-size: 8rem;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .title__hgroup__header {
+    font-size: 10rem;
+  }
+
+  .title__hgroup__header--interview {
+    font-size: 5rem;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .title__hgroup__header {
+    font-size: 8rem;
+  }
+
+  .title__hgroup__header--interview {
+    font-size: 4rem;
+  }
+}
+
 @media screen and (max-width: 850px) {
+  .title__hgroup__header {
+    font-size: 4rem;
+  }
+
+  .title__hgroup__header--interview {
+    font-size: 2rem;
+  }
+
   .title__hgroup__header--interview:hover {
     color: var(--color--hover);
     transform: translateY(-10%);
